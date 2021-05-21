@@ -16,6 +16,7 @@
 		D84292B02658251B00830BE5 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292AF2658251B00830BE5 /* Extensions+UIView.swift */; };
 		D84292B426582B5A00830BE5 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292B326582B5A00830BE5 /* HomeBottomControlsStackView.swift */; };
 		D84292B72658336600830BE5 /* HomeTopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */; };
+		D84292BB26583D0E00830BE5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292BA26583D0E00830BE5 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D84292AF2658251B00830BE5 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		D84292B326582B5A00830BE5 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopNavigationStackView.swift; sourceTree = "<group>"; };
+		D84292BA26583D0E00830BE5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				D84292B326582B5A00830BE5 /* HomeBottomControlsStackView.swift */,
 				D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */,
+				D84292BA26583D0E00830BE5 /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84292BB26583D0E00830BE5 /* CardView.swift in Sources */,
 				D842929B265820D600830BE5 /* ViewController.swift in Sources */,
 				D8429297265820D600830BE5 /* AppDelegate.swift in Sources */,
 				D84292B426582B5A00830BE5 /* HomeBottomControlsStackView.swift in Sources */,
