@@ -8,41 +8,45 @@
 import UIKit
 
 final class ViewController: UIViewController {
+    // MARK: - Private Properties
+
+    private let topStackView: HomeTopNavigationStackView = {
+        let stackView = HomeTopNavigationStackView()
+        return stackView
+    }()
+
+    private let blueView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .blue
+        return view
+    }()
+
+    private let bottomStackView: HomeBottomControlsStackView = {
+        let stackView = HomeBottomControlsStackView()
+        return stackView
+    }()
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
+    }
 
-        let subviews = [UIColor.gray, UIColor.darkGray, UIColor.black].map { color -> UIView in
-            let view = UIView()
-            view.backgroundColor = color
-            return view
-        }
-        let topStackView: UIStackView = {
-            let stackView = UIStackView(arrangedSubviews: subviews)
-            stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            stackView.distribution = .fillEqually
-            return stackView
-        }()
+    // MARK: - Private Methods
 
-        let blueView: UIView = {
-            let view = UIView()
-            view.backgroundColor = .blue
-            return view
-        }()
-        let yellowView: UIView = {
-            let view = UIView()
-            view.heightAnchor.constraint(equalToConstant: 120).isActive = true
-            view.backgroundColor = .yellow
-            return view
-        }()
-
-        let stackView: UIStackView = {
-            let stackView = UIStackView(arrangedSubviews: [topStackView, blueView, yellowView])
+    private func setupLayout() {
+        let overallStackView: UIStackView = {
+            let stackView = UIStackView(arrangedSubviews: [topStackView, blueView, bottomStackView])
             stackView.axis = .vertical
             return stackView
         }()
-        view.addSubview(stackView)
-        stackView.frame = .init(x: 0, y: 0, width: 300, height: 200)
-
-        stackView.fillSuperview()
+        view.addSubview(overallStackView)
+        overallStackView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
     }
 }
