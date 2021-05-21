@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeBottomControlsStackView: UIStackView {
-    // MARK: - Private Properties
+    // MARK: - Visual Comonents
 
     private let bottomSubview = [
         UIImage(named: "refresh_circle"),

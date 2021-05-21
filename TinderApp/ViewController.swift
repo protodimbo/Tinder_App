@@ -8,7 +8,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    // MARK: - Private Properties
+    // MARK: - Visual Components
 
     private let topStackView: HomeTopNavigationStackView = {
         let stackView = HomeTopNavigationStackView()
