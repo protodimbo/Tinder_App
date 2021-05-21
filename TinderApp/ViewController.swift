@@ -15,9 +15,8 @@ final class ViewController: UIViewController {
         return stackView
     }()
 
-    private let blueView: UIView = {
+    private let cardsDeckView: UIView = {
         let view = UIView()
-        view.backgroundColor = .blue
         return view
     }()
 
@@ -31,13 +30,14 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupDummyCards()
     }
 
     // MARK: - Private Methods
 
     private func setupLayout() {
         let overallStackView: UIStackView = {
-            let stackView = UIStackView(arrangedSubviews: [topStackView, blueView, bottomStackView])
+            let stackView = UIStackView(arrangedSubviews: [topStackView, cardsDeckView, bottomStackView])
             stackView.axis = .vertical
             return stackView
         }()
@@ -48,5 +48,14 @@ final class ViewController: UIViewController {
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
             trailing: view.trailingAnchor
         )
+        overallStackView.isLayoutMarginsRelativeArrangement = true
+        overallStackView.layoutMargins = .init(top: 0, left: 12, bottom: 0, right: 12)
+        overallStackView.bringSubviewToFront(cardsDeckView)
+    }
+
+    private func setupDummyCards() {
+        let cardView = CardView()
+        cardsDeckView.addSubview(cardView)
+        cardView.fillSuperview()
     }
 }
