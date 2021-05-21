@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeTopNavigationStackView: UIStackView {
-    // MARK: - Private Properties
+    // MARK: - Visual Components
 
     private let topSubview = [
         UIImage(named: "top_left_profile"),
