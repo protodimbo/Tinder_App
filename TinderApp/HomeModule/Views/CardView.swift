@@ -57,25 +57,10 @@ final class CardView: UIView {
 
     // MARK: - Public Methods
 
-    func configureCard(imageName: String, name: String, age: Int, profession: String) {
+    func configureCard(imageName: String, attributedText: NSAttributedString, textAigment: NSTextAlignment) {
         imageView.image = UIImage(named: imageName)
-        informationLabel.text = "\(name) \(age)\n\(profession)"
-
-        let attributedText = NSMutableAttributedString(
-            string: name,
-            attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)]
-        )
-        attributedText
-            .append(NSAttributedString(
-                string: " \(age)",
-                attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]
-            ))
-        attributedText
-            .append(NSAttributedString(
-                string: "\n\(profession)",
-                attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]
-            ))
         informationLabel.attributedText = attributedText
+        informationLabel.textAlignment = textAigment
     }
 
     // MARK: - Private Methods
