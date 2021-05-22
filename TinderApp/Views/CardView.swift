@@ -18,6 +18,14 @@ final class CardView: UIView {
         return imageView
     }()
 
+    private let informationLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 34, weight: .heavy)
+        label.numberOfLines = 0
+        return label
+    }()
+
     // MARK: - Private Properties
 
     private let threshold: CGFloat = 100
@@ -29,6 +37,15 @@ final class CardView: UIView {
         addSubview(imageView)
         imageView.fillSuperview()
 
+        addSubview(informationLabel)
+        informationLabel.anchor(
+            top: nil,
+            leading: leadingAnchor,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
+            padding: .init(top: 0, left: 16, bottom: 16, right: 16)
+        )
+
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         addGestureRecognizer(panGesture)
     }
@@ -36,6 +53,29 @@ final class CardView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Public Methods
+
+    func configureCard(imageName: String, name: String, age: Int, profession: String) {
+        imageView.image = UIImage(named: imageName)
+        informationLabel.text = "\(name) \(age)\n\(profession)"
+
+        let attributedText = NSMutableAttributedString(
+            string: name,
+            attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)]
+        )
+        attributedText
+            .append(NSAttributedString(
+                string: " \(age)",
+                attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]
+            ))
+        attributedText
+            .append(NSAttributedString(
+                string: "\n\(profession)",
+                attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]
+            ))
+        informationLabel.attributedText = attributedText
     }
 
     // MARK: - Private Methods
@@ -51,15 +91,20 @@ final class CardView: UIView {
             options: .curveEaseOut,
             animations: {
                 if shouldDismissCard {
-                    let hiddingView = CGAffineTransform(translationX: 1000 * translationDirection, y: 0)
+                    let hiddingView = CGAffineTransform(translationX: 600 * translationDirection, y: 0)
                     self.transform = hiddingView
                 } else {
                     self.transform = .identity
                 }
             }, completion: { _ in
-                guard let superview = self.superview else { return }
+//                guard let superview = self.superview else { return }
                 self.transform = .identity
-                self.frame = CGRect(x: 0, y: 0, width: superview.frame.width, height: superview.frame.height)
+
+                if shouldDismissCard {
+                    self.removeFromSuperview()
+                }
+
+//                self.frame = CGRect(x: 0, y: 0, width: superview.frame.width, height: superview.frame.height)
             }
         )
     }

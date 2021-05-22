@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D8429297265820D600830BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8429296265820D600830BE5 /* AppDelegate.swift */; };
 		D8429299265820D600830BE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8429298265820D600830BE5 /* SceneDelegate.swift */; };
-		D842929B265820D600830BE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D842929A265820D600830BE5 /* ViewController.swift */; };
+		D842929B265820D600830BE5 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D842929A265820D600830BE5 /* HomeController.swift */; };
 		D842929E265820D600830BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D842929C265820D600830BE5 /* Main.storyboard */; };
 		D84292A0265820D700830BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D842929F265820D700830BE5 /* Assets.xcassets */; };
 		D84292A3265820D700830BE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84292A1265820D700830BE5 /* LaunchScreen.storyboard */; };
@@ -17,13 +17,14 @@
 		D84292B426582B5A00830BE5 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292B326582B5A00830BE5 /* HomeBottomControlsStackView.swift */; };
 		D84292B72658336600830BE5 /* HomeTopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */; };
 		D84292BB26583D0E00830BE5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292BA26583D0E00830BE5 /* CardView.swift */; };
+		D85AE7932658F47E00FE5F0B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AE7922658F47E00FE5F0B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D8429293265820D600830BE5 /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8429296265820D600830BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8429298265820D600830BE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D842929A265820D600830BE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D842929A265820D600830BE5 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		D842929D265820D600830BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D842929F265820D700830BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D84292A2265820D700830BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -32,6 +33,7 @@
 		D84292B326582B5A00830BE5 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopNavigationStackView.swift; sourceTree = "<group>"; };
 		D84292BA26583D0E00830BE5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D85AE7922658F47E00FE5F0B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +66,12 @@
 		D8429295265820D600830BE5 /* TinderApp */ = {
 			isa = PBXGroup;
 			children = (
+				D85AE7912658F46C00FE5F0B /* Model */,
 				D84292B226582B3400830BE5 /* Views */,
 				D84292AE2658246500830BE5 /* Extensions */,
 				D8429296265820D600830BE5 /* AppDelegate.swift */,
 				D8429298265820D600830BE5 /* SceneDelegate.swift */,
-				D842929A265820D600830BE5 /* ViewController.swift */,
+				D842929A265820D600830BE5 /* HomeController.swift */,
 				D842929C265820D600830BE5 /* Main.storyboard */,
 				D842929F265820D700830BE5 /* Assets.xcassets */,
 				D84292A1265820D700830BE5 /* LaunchScreen.storyboard */,
@@ -93,6 +96,14 @@
 				D84292BA26583D0E00830BE5 /* CardView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D85AE7912658F46C00FE5F0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D85AE7922658F47E00FE5F0B /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +218,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D84292BB26583D0E00830BE5 /* CardView.swift in Sources */,
-				D842929B265820D600830BE5 /* ViewController.swift in Sources */,
+				D842929B265820D600830BE5 /* HomeController.swift in Sources */,
 				D8429297265820D600830BE5 /* AppDelegate.swift in Sources */,
 				D84292B426582B5A00830BE5 /* HomeBottomControlsStackView.swift in Sources */,
+				D85AE7932658F47E00FE5F0B /* User.swift in Sources */,
 				D84292B02658251B00830BE5 /* Extensions+UIView.swift in Sources */,
 				D84292B72658336600830BE5 /* HomeTopNavigationStackView.swift in Sources */,
 				D8429299265820D600830BE5 /* SceneDelegate.swift in Sources */,

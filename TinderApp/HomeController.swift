@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeController.swift
 //  TinderApp
 //
 //  Created by  protodimbo on 21.05.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class HomeController: UIViewController {
     // MARK: - Visual Components
 
     private let topStackView: HomeTopNavigationStackView = {
@@ -24,6 +24,13 @@ final class ViewController: UIViewController {
         let stackView = HomeBottomControlsStackView()
         return stackView
     }()
+
+    // MARK: - Private Properties
+
+    let users = [
+        User(name: "Ann", age: 24, profession: "Actress", imageName: "lady5c"),
+        User(name: "Jane", age: 18, profession: "Music DJ", imageName: "lady6c")
+    ]
 
     // MARK: - Lifecycle
 
@@ -54,8 +61,16 @@ final class ViewController: UIViewController {
     }
 
     private func setupDummyCards() {
-        let cardView = CardView()
-        cardsDeckView.addSubview(cardView)
-        cardView.fillSuperview()
+        users.forEach { user in
+            let cardView = CardView()
+            cardView.configureCard(
+                imageName: user.imageName,
+                name: user.name,
+                age: user.age,
+                profession: user.profession
+            )
+            cardsDeckView.addSubview(cardView)
+            cardView.fillSuperview()
+        }
     }
 }
