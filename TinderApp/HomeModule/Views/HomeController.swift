@@ -27,9 +27,9 @@ final class HomeController: UIViewController {
 
     // MARK: - Private Properties
 
-    let users = [
-        User(name: "Ann", age: 24, profession: "Actress", imageName: "lady5c"),
-        User(name: "Jane", age: 18, profession: "Music DJ", imageName: "lady6c")
+    private let cardViewModels = [
+        User(name: "Ann", age: 24, profession: "Actress", imageName: "lady5c").toCardViewModel(),
+        User(name: "Jane", age: 18, profession: "Music DJ", imageName: "lady6c").toCardViewModel()
     ]
 
     // MARK: - Lifecycle
@@ -61,13 +61,12 @@ final class HomeController: UIViewController {
     }
 
     private func setupDummyCards() {
-        users.forEach { user in
+        cardViewModels.forEach { cardViewModel in
             let cardView = CardView()
             cardView.configureCard(
-                imageName: user.imageName,
-                name: user.name,
-                age: user.age,
-                profession: user.profession
+                imageName: cardViewModel.imageName,
+                attributedText: cardViewModel.attributedString,
+                textAigment: cardViewModel.textAligment
             )
             cardsDeckView.addSubview(cardView)
             cardView.fillSuperview()

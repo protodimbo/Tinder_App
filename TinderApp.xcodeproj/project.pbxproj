@@ -18,6 +18,7 @@
 		D84292B72658336600830BE5 /* HomeTopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */; };
 		D84292BB26583D0E00830BE5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84292BA26583D0E00830BE5 /* CardView.swift */; };
 		D85AE7932658F47E00FE5F0B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AE7922658F47E00FE5F0B /* User.swift */; };
+		D85AE79C2658FE3100FE5F0B /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AE79B2658FE3100FE5F0B /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopNavigationStackView.swift; sourceTree = "<group>"; };
 		D84292BA26583D0E00830BE5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D85AE7922658F47E00FE5F0B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D85AE79B2658FE3100FE5F0B /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +68,9 @@
 		D8429295265820D600830BE5 /* TinderApp */ = {
 			isa = PBXGroup;
 			children = (
-				D85AE7912658F46C00FE5F0B /* Model */,
-				D84292B226582B3400830BE5 /* Views */,
+				D85AE7952658FCEF00FE5F0B /* HomeModule */,
 				D84292AE2658246500830BE5 /* Extensions */,
-				D8429296265820D600830BE5 /* AppDelegate.swift */,
-				D8429298265820D600830BE5 /* SceneDelegate.swift */,
-				D842929A265820D600830BE5 /* HomeController.swift */,
-				D842929C265820D600830BE5 /* Main.storyboard */,
-				D842929F265820D700830BE5 /* Assets.xcassets */,
-				D84292A1265820D700830BE5 /* LaunchScreen.storyboard */,
-				D84292A4265820D700830BE5 /* Info.plist */,
+				D85AE7972658FD3800FE5F0B /* SupportingFiles */,
 			);
 			path = TinderApp;
 			sourceTree = "<group>";
@@ -94,6 +89,7 @@
 				D84292B326582B5A00830BE5 /* HomeBottomControlsStackView.swift */,
 				D84292B62658336600830BE5 /* HomeTopNavigationStackView.swift */,
 				D84292BA26583D0E00830BE5 /* CardView.swift */,
+				D842929A265820D600830BE5 /* HomeController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +100,37 @@
 				D85AE7922658F47E00FE5F0B /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D85AE7952658FCEF00FE5F0B /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				D85AE79A2658FE2300FE5F0B /* ViewModel */,
+				D85AE7912658F46C00FE5F0B /* Model */,
+				D84292B226582B3400830BE5 /* Views */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		D85AE7972658FD3800FE5F0B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D8429298265820D600830BE5 /* SceneDelegate.swift */,
+				D8429296265820D600830BE5 /* AppDelegate.swift */,
+				D842929C265820D600830BE5 /* Main.storyboard */,
+				D842929F265820D700830BE5 /* Assets.xcassets */,
+				D84292A1265820D700830BE5 /* LaunchScreen.storyboard */,
+				D84292A4265820D700830BE5 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D85AE79A2658FE2300FE5F0B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D85AE79B2658FE3100FE5F0B /* CardViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +252,7 @@
 				D84292B02658251B00830BE5 /* Extensions+UIView.swift in Sources */,
 				D84292B72658336600830BE5 /* HomeTopNavigationStackView.swift in Sources */,
 				D8429299265820D600830BE5 /* SceneDelegate.swift in Sources */,
+				D85AE79C2658FE3100FE5F0B /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7N96TB34B5;
-				INFOPLIST_FILE = TinderApp/Info.plist;
+				INFOPLIST_FILE = TinderApp/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,7 +420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7N96TB34B5;
-				INFOPLIST_FILE = TinderApp/Info.plist;
+				INFOPLIST_FILE = TinderApp/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
