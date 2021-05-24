@@ -13,7 +13,7 @@ protocol ProducesCardViewModel {
 
 /// Our card viewModel
 struct CardViewModel {
-    let imageName: String
+    let imageNames: [String]
     let attributedString: NSAttributedString
     let textAligment: NSTextAlignment
 }

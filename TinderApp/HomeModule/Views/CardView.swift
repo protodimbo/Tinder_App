@@ -10,6 +10,13 @@ import UIKit
 final class CardView: UIView {
     // MARK: - Visual Components
 
+    private let barsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 4
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+
     private let imageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "lady5c"))
         imageView.contentMode = .scaleAspectFill
@@ -37,15 +44,25 @@ final class CardView: UIView {
 
     var cardViewModel: CardViewModel! {
         didSet {
-            imageView.image = UIImage(named: cardViewModel.imageName)
+            let imageName = cardViewModel.imageNames.first ?? ""
+            imageView.image = UIImage(named: imageName)
             informationLabel.attributedText = cardViewModel.attributedString
             informationLabel.textAlignment = cardViewModel.textAligment
+            // Setup bars
+            (0 ..< cardViewModel.imageNames.count).forEach { _ in
+                let barView = UIView()
+                barView.backgroundColor = barDisselectedColor
+                barsStackView.addArrangedSubview(barView)
+            }
+            barsStackView.arrangedSubviews.first?.backgroundColor = .white
         }
     }
 
     // MARK: - Private Properties
 
     private let threshold: CGFloat = 100
+    private var imageIndex = 0
+    private let barDisselectedColor = UIColor(white: 0, alpha: 0.1)
 
     // MARK: - Initializers
 
@@ -55,6 +72,8 @@ final class CardView: UIView {
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         addGestureRecognizer(panGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tapGesture)
     }
 
     @available(*, unavailable)
@@ -78,6 +97,16 @@ final class CardView: UIView {
         imageView.fillSuperview()
 
         layer.addSublayer(gradientLayer)
+
+        addSubview(barsStackView)
+        barsStackView.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 8, left: 8, bottom: 0, right: 8),
+            size: .init(width: 0, height: 4)
+        )
 
         addSubview(informationLabel)
         informationLabel.anchor(
@@ -136,5 +165,19 @@ final class CardView: UIView {
         default:
             return
         }
+    }
+
+    @objc private func handleTap(gesture: UITapGestureRecognizer) {
+        let tapLocation = gesture.location(in: nil)
+        if tapLocation.x > frame.width / 2 {
+            imageIndex = min(imageIndex + 1, cardViewModel.imageNames.count - 1)
+        } else {
+            imageIndex = max(0, imageIndex - 1)
+        }
+
+        let imageName = cardViewModel.imageNames[imageIndex]
+        imageView.image = UIImage(named: imageName)
+        barsStackView.arrangedSubviews.forEach { $0.backgroundColor = barDisselectedColor }
+        barsStackView.arrangedSubviews[imageIndex].backgroundColor = .white
     }
 }
