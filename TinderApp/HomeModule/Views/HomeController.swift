@@ -27,10 +27,16 @@ final class HomeController: UIViewController {
 
     // MARK: - Private Properties
 
-    private let cardViewModels = [
-        User(name: "Ann", age: 24, profession: "Actress", imageName: "lady5c").toCardViewModel(),
-        User(name: "Jane", age: 18, profession: "Music DJ", imageName: "lady6c").toCardViewModel()
-    ]
+    private let cardViewModels: [CardViewModel] = {
+        let producers = [
+            Advertiser(title: "Check my Github", brandName: "@protodimbo", posterPhotoName: "advertiser"),
+            User(name: "Ann", age: 24, profession: "Actress", imageName: "lady5c"),
+            User(name: "Jane", age: 18, profession: "Music DJ", imageName: "lady6c")
+        ] as [ProducesCardViewModel]
+
+        let viewModels = producers.map { $0.toCardViewModel() }
+        return viewModels
+    }()
 
     // MARK: - Lifecycle
 
@@ -63,11 +69,7 @@ final class HomeController: UIViewController {
     private func setupDummyCards() {
         cardViewModels.forEach { cardViewModel in
             let cardView = CardView()
-            cardView.configureCard(
-                imageName: cardViewModel.imageName,
-                attributedText: cardViewModel.attributedString,
-                textAigment: cardViewModel.textAligment
-            )
+            cardView.cardViewModel = cardViewModel
             cardsDeckView.addSubview(cardView)
             cardView.fillSuperview()
         }

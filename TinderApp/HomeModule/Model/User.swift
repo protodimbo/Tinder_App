@@ -8,13 +8,13 @@
 import UIKit
 
 /// User model
-struct User {
+struct User: ProducesCardViewModel {
     let name: String
     let age: Int
     let profession: String
     let imageName: String
 
-    // Func to generate viewModel for cards
+    // Generate viewModel for cards
     func toCardViewModel() -> CardViewModel {
         let attributedText = NSMutableAttributedString(
             string: name,
