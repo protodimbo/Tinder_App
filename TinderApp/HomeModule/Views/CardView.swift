@@ -18,10 +18,17 @@ final class CardView: UIView {
         return imageView
     }()
 
+    private let gradientLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.6, 1]
+        gradientLayer.cornerRadius = 10
+        return gradientLayer
+    }()
+
     private let informationLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 34, weight: .heavy)
         label.numberOfLines = 0
         return label
     }()
@@ -44,17 +51,7 @@ final class CardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(imageView)
-        imageView.fillSuperview()
-
-        addSubview(informationLabel)
-        informationLabel.anchor(
-            top: nil,
-            leading: leadingAnchor,
-            bottom: bottomAnchor,
-            trailing: trailingAnchor,
-            padding: .init(top: 0, left: 16, bottom: 16, right: 16)
-        )
+        setupLayout()
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         addGestureRecognizer(panGesture)
@@ -65,9 +62,32 @@ final class CardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Lifecycle
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = frame
+    }
+
     // MARK: - Public Methods
 
     // MARK: - Private Methods
+
+    private func setupLayout() {
+        addSubview(imageView)
+        imageView.fillSuperview()
+
+        layer.addSublayer(gradientLayer)
+
+        addSubview(informationLabel)
+        informationLabel.anchor(
+            top: nil,
+            leading: leadingAnchor,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
+            padding: .init(top: 0, left: 16, bottom: 16, right: 16)
+        )
+    }
 
     private func endedAnimation(_ gesture: UIPanGestureRecognizer) {
         let translationDirection: CGFloat = gesture.translation(in: nil).x > 0 ? 1 : -1
