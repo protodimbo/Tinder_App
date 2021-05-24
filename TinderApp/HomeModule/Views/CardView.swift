@@ -26,6 +26,16 @@ final class CardView: UIView {
         return label
     }()
 
+    // MARK: - Public Properties
+
+    var cardViewModel: CardViewModel! {
+        didSet {
+            imageView.image = UIImage(named: cardViewModel.imageName)
+            informationLabel.attributedText = cardViewModel.attributedString
+            informationLabel.textAlignment = cardViewModel.textAligment
+        }
+    }
+
     // MARK: - Private Properties
 
     private let threshold: CGFloat = 100
@@ -56,12 +66,6 @@ final class CardView: UIView {
     }
 
     // MARK: - Public Methods
-
-    func configureCard(imageName: String, attributedText: NSAttributedString, textAigment: NSTextAlignment) {
-        imageView.image = UIImage(named: imageName)
-        informationLabel.attributedText = attributedText
-        informationLabel.textAlignment = textAigment
-    }
 
     // MARK: - Private Methods
 
