@@ -12,7 +12,7 @@ struct User: ProducesCardViewModel {
     let name: String
     let age: Int
     let profession: String
-    let imageName: String
+    let imageNames: [String]
 
     // Generate viewModel for cards
     func toCardViewModel() -> CardViewModel {
@@ -31,6 +31,6 @@ struct User: ProducesCardViewModel {
                 attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]
             ))
 
-        return CardViewModel(imageName: imageName, attributedString: attributedText, textAligment: .left)
+        return CardViewModel(imageNames: imageNames, attributedString: attributedText, textAligment: .left)
     }
 }
